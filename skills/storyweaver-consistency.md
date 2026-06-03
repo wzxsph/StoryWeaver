@@ -1,9 +1,9 @@
 ---
-name: novelai-consistency
+name: storyweaver-consistency
 description: 十维一致性校验，确保角色状态、时间线、物品归属在长篇中保持连贯
 ---
 
-# NovelAI Consistency
+# StoryWeaver Consistency
 
 ## When to Activate
 - 用户要求校验章节一致性
@@ -32,7 +32,7 @@ description: 十维一致性校验，确保角色状态、时间线、物品归�
 
 ## Verification Process
 
-1. 读取 `.novelai_writer/state_document.json`
+1. 读取 `.storyweaver/state_document.json`
 2. 读取目标章节文本
 3. 逐维检查一致性
 4. 输出 violation 报告

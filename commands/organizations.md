@@ -2,7 +2,7 @@
 description: 列出组织/势力
 ---
 
-# /novelai organizations
+# /storyweaver organizations
 
 列出小说中的组织、势力、门派等。
 
@@ -30,7 +30,7 @@ description: 列出组织/势力
 
 ## 数据来源
 
-从 `.novelai_writer/state_document.json` 的 `organizations` 数组读取。
+从 `.storyweaver/state_document.json` 的 `organizations` 数组读取。
 
 ## 世界观构建
 
@@ -39,6 +39,6 @@ description: 列出组织/势力
 ## 示例
 
 ```
-/novelai organizations
-/novelai organizations --type 门派
+/storyweaver organizations
+/storyweaver organizations --type 门派
 ```

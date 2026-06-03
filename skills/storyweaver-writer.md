@@ -1,9 +1,9 @@
 ---
-name: novelai-writer
+name: storyweaver
 description: 网文长篇写作助手，激活于用户撰写/续写小说章节时
 ---
 
-# NovelAI Writer
+# StoryWeaver
 
 ## When to Activate
 - 用户要求续写章节
@@ -13,11 +13,11 @@ description: 网文长篇写作助手，激活于用户撰写/续写小说章节
 
 ## Core Rules
 
-1. **状态优先**：每次续写前必须读取 `.novelai_writer/state_document.json`
+1. **状态优先**：每次续写前必须读取 `.storyweaver/state_document.json`
 2. **增量更新**：续写完成后，必须更新状态文档（新增角色、事件、物品变化）
 3. **一致性前置**：生成前注入 P0-P3 层级上下文
 4. **用户确认**：情节重大转折前必须确认用户意图
-5. **文风统一**：严格按照 `@rules/novelai-rules.md` 执行
+5. **文风统一**：严格按照 `@rules/storyweaver-rules.md` 执行
 
 ## P0-P3 层级上下文
 
@@ -32,7 +32,7 @@ After generating chapter content:
    - Items acquired/lost/transferred
    - Plot thread state changes
    - Character location/emotion changes
-2. Update `.novelai_writer/state_document.json` via Edit tool
+2. Update `.storyweaver/state_document.json` via Edit tool
 3. Report what was updated to user
 
 ## Chapter Generation Prompt Template
@@ -41,4 +41,4 @@ After generating chapter content:
 
 ## Writing Rules
 
-严格遵守 `@rules/novelai-rules.md` 中的规范。
+严格遵守 `@rules/storyweaver-rules.md` 中的规范。

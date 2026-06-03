@@ -1,9 +1,9 @@
 ---
-name: novelai-worldbuild
+name: storyweaver-worldbuild
 description: 根据用户描述生成小说世界观设定
 ---
 
-# NovelAI Worldbuild
+# StoryWeaver Worldbuild
 
 ## When to Activate
 - 用户要求构建世界观
@@ -29,7 +29,7 @@ description: 根据用户描述生成小说世界观设定
 4. 生成主要势力/组织
 5. 生成关键地点/场景
 6. 生成重要物品/道具
-7. 将设定保存到 `.novelai_writer/state_document.json` 的对应字段
+7. 将设定保存到 `.storyweaver/state_document.json` 的对应字段
 
 ## 示例
 

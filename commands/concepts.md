@@ -2,7 +2,7 @@
 description: 列出概念设定（功法、规则、社会制度）
 ---
 
-# /novelai concepts
+# /storyweaver concepts
 
 列出小说中的概念设定，如功法、规则、社会制度等。
 
@@ -32,11 +32,11 @@ description: 列出概念设定（功法、规则、社会制度）
 
 ## 数据来源
 
-从 `.novelai_writer/state_document.json` 的 `concepts` 数组读取。
+从 `.storyweaver/state_document.json` 的 `concepts` 数组读取。
 
 ## 示例
 
 ```
-/novelai concepts
-/novelai concepts --type 功法
+/storyweaver concepts
+/storyweaver concepts --type 功法
 ```

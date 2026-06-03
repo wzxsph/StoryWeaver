@@ -2,7 +2,7 @@
 description: 查看当前项目状态概览
 ---
 
-# /novelai status
+# /storyweaver status
 
 查看当前小说项目的状态概览。
 
@@ -45,10 +45,10 @@ description: 查看当前项目状态概览
 
 ## 数据来源
 
-从 `.novelai_writer/state_document.json` 读取所有字段。
+从 `.storyweaver/state_document.json` 读取所有字段。
 
 ## 示例
 
 ```
-/novelai status
+/storyweaver status
 ```

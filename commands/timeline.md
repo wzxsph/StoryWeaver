@@ -2,7 +2,7 @@
 description: 查看事件时间线，按章节排序
 ---
 
-# /novelai timeline
+# /storyweaver timeline
 
 查看小说的事件时间线，按章节顺序排列。
 
@@ -27,14 +27,14 @@ description: 查看事件时间线，按章节排序
 
 ## 数据来源
 
-从 `.novelai_writer/state_document.json` 的 `timeline` 数组读取。
+从 `.storyweaver/state_document.json` 的 `timeline` 数组读取。
 
 ## 示例
 
 ```
-/novelai timeline
-/novelai timeline --chapter 5
-/novelai timeline --character "林小雨"
+/storyweaver timeline
+/storyweaver timeline --chapter 5
+/storyweaver timeline --character "林小雨"
 ```
 
 ## 时间线规则

@@ -9,18 +9,18 @@ description: 写作智能体 — 基于上下文和状态文档生成/润色章�
 
 ## When to Activate
 
-- 用户要求续写章节 `/novelai continue`
+- 用户要求续写章节 `/storyweaver continue`
 - 用户要求生成新章节
-- 用户要求润色章节 `/novelai polish`
-- 用户要求扩写大纲 `/novelai expand`
+- 用户要求润色章节 `/storyweaver polish`
+- 用户要求扩写大纲 `/storyweaver expand`
 
 ## Core Rules
 
-1. **状态优先**：必须读取 `.novelai_writer/state_document.json`
+1. **状态优先**：必须读取 `.storyweaver/state_document.json`
 2. **上下文注入**：P0-P3 层级上下文
 3. **事实约束**：不得扩展用户提供的设定
 4. **角色限制**：不得引入未授权的新角色
-5. **文风统一**：遵守 @rules/novelforge/novelai-rules.md
+5. **文风统一**：遵守 @rules/novelforge/storyweaver-rules.md
 
 ## P0-P3 Context Injection
 
@@ -73,9 +73,9 @@ description: 写作智能体 — 基于上下文和状态文档生成/润色章�
 
 | 命令 | 使用提示词 | 说明 |
 |------|-----------|------|
-| `/novelai continue` | @prompts/内容生成.txt | 续写下一章 |
-| `/novelai continue --polish` | @prompts/章节润色.txt | 润色现有章节 |
-| `/novelai continue --expand` | @prompts/章节扩写.txt | 大纲扩写为正文 |
+| `/storyweaver continue` | @prompts/内容生成.txt | 续写下一章 |
+| `/storyweaver continue --polish` | @prompts/章节润色.txt | 润色现有章节 |
+| `/storyweaver continue --expand` | @prompts/章节扩写.txt | 大纲扩写为正文 |
 
 ## Reference
 

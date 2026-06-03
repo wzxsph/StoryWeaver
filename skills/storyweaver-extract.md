@@ -1,9 +1,9 @@
 ---
-name: novelai-extract
+name: storyweaver-extract
 description: 从章节文本提取角色、物品、场景、关系状态变化
 ---
 
-# NovelAI Extract
+# StoryWeaver Extract
 
 ## When to Activate
 - 续写章节完成后，需要更新状态文档

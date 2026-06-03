@@ -2,7 +2,7 @@
 description: 列出场景及其状态
 ---
 
-# /novelai scenes
+# /storyweaver scenes
 
 列出所有场景及其当前状态。
 
@@ -30,11 +30,11 @@ description: 列出场景及其状态
 
 ## 数据来源
 
-从 `.novelai_writer/state_document.json` 的 `scenes` 数组读取。
+从 `.storyweaver/state_document.json` 的 `scenes` 数组读取。
 
 ## 示例
 
 ```
-/novelai scenes
-/novelai scenes --character "林小雨"
+/storyweaver scenes
+/storyweaver scenes --character "林小雨"
 ```

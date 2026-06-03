@@ -9,7 +9,7 @@ description: 一致性校验智能体 — 十维框架校验角色、物品、�
 
 ## When to Activate
 
-- 用户要求校验章节一致性 `/novelai verify`
+- 用户要求校验章节一致性 `/storyweaver verify`
 - 章节续写完成后自动触发
 - 用户要求全面审计
 

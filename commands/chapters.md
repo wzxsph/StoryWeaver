@@ -2,7 +2,7 @@
 description: 列出章节概览
 ---
 
-# /novelai chapters
+# /storyweaver chapters
 
 列出所有章节的概览信息。
 
@@ -26,12 +26,12 @@ description: 列出章节概览
 
 ## 数据来源
 
-从 `.novelai_writer/state_document.json` 的 `chapters` 数组读取。
+从 `.storyweaver/state_document.json` 的 `chapters` 数组读取。
 
 ## 示例
 
 ```
-/novelai chapters
-/novelai chapters --range 1-30
-/novelai chapters --status completed
+/storyweaver chapters
+/storyweaver chapters --range 1-30
+/storyweaver chapters --status completed
 ```

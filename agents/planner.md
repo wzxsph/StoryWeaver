@@ -12,8 +12,8 @@ description: 网文大纲规划智能体 — 根据用户意图创建章节/卷/
 - 用户要求规划新小说的大纲
 - 用户要求生成章节大纲
 - 用户要求规划分卷结构
-- `/novelai plan` 被调用
-- `/novelai init --template snowflake` 使用雪花创作法
+- `/storyweaver plan` 被调用
+- `/storyweaver init --template snowflake` 使用雪花创作法
 
 ## Core Skills
 

@@ -2,7 +2,7 @@
 description: 列出物品、法宝、丹药等设定
 ---
 
-# /novelai items
+# /storyweaver items
 
 列出小说中的物品、法宝、丹药、材料等设定。
 
@@ -31,7 +31,7 @@ description: 列出物品、法宝、丹药等设定
 
 ## 数据来源
 
-从 `.novelai_writer/state_document.json` 的 `items` 数组读取。
+从 `.storyweaver/state_document.json` 的 `items` 数组读取。
 
 ## 物品类别
 
@@ -40,7 +40,7 @@ description: 列出物品、法宝、丹药等设定
 ## 示例
 
 ```
-/novelai items
-/novelai items --type 法宝
-/novelai items --owner "林小雨"
+/storyweaver items
+/storyweaver items --type 法宝
+/storyweaver items --owner "林小雨"
 ```

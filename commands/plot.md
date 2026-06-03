@@ -2,7 +2,7 @@
 description: 列出情节线状态和进度
 ---
 
-# /novelai plot
+# /storyweaver plot
 
 列出所有情节线（plot threads）的当前状态和进度。
 
@@ -38,7 +38,7 @@ description: 列出情节线状态和进度
 
 ## 数据来源
 
-从 `.novelai_writer/state_document.json` 的 `plot_threads` 数组读取。
+从 `.storyweaver/state_document.json` 的 `plot_threads` 数组读取。
 
 ## 规则参考
 
@@ -47,7 +47,7 @@ description: 列出情节线状态和进度
 ## 示例
 
 ```
-/novelai plot
-/novelai plot --status active
-/novelai plot --progress 50
+/storyweaver plot
+/storyweaver plot --status active
+/storyweaver plot --progress 50
 ```

@@ -1,10 +1,10 @@
-# novelai-writer
+# storyweaver
 
 基于 Claude Code 的网文长篇写作助手插件系统。参考 ECC 架构模式和 NovelForge 设计理念，通过十维一致性校验框架，管理角色、物品、情节线和关系网络，确保数百章内容连贯一致。
 
 > 本项目处于构建初期，尚未经过充分测试，属于即兴创作的产物，在实际使用中可能会遇到各种问题。本项目深度参考了 [ECC](https://github.com/affaan-m/ECC) 和 [NovelForge](https://github.com/RhythmicWave/NovelForge) 的设计理念实现。
 >
-> **版本**: 1.2.2
+> **版本**: 1.2.3
 
 ## 技术栈
 
@@ -19,7 +19,7 @@
 ## 目录结构
 
 ```
-novelai_writer/
+storyweaver/
 ├── agents/                       # 5 个智能体
 ├── commands/                     # 16 个命令
 ├── skills/                       # 4 个技能
@@ -195,20 +195,20 @@ novelai_writer/
 
 ```bash
 # 添加市场
-/plugin marketplace add https://github.com/wzxsph/NovelAI-Writer
+/plugin marketplace add https://github.com/wzxsph/StoryWeaver
 
 # 安装插件
-/plugin install novelai-writer
+/plugin install storyweaver
 ```
 
 ### 方式二：复制到项目
 
 ```bash
 # 克隆仓库
-git clone https://github.com/wzxsph/NovelAI-Writer.git
+git clone https://github.com/wzxsph/StoryWeaver.git
 
 # 进入目录
-cd NovelAI-Writer
+cd StoryWeaver
 
 # 复制整个项目到 Claude Code 配置目录
 cp -r agents commands skills rules prompts knowledge workflows contexts state .claude-plugin/ ~/.claude/

@@ -1,12 +1,12 @@
-# novelai-writer 项目引导
+# storyweaver 项目引导
 
-> **版本**: 1.2.2
+> **版本**: 1.2.3
 
-本项目是 novelai-writer 的项目级学习文档，参考 ECC (Everything Claude Code) 架构模式构建。
+本项目是 storyweaver 的项目级学习文档，参考 ECC (Everything Claude Code) 架构模式构建。
 
 ## 项目概述
 
-novelai-writer 是一个基于 Claude Code 的网文长篇写作助手插件系统。参考 ECC 架构模式和 NovelForge 设计理念，通过十维一致性校验框架，管理角色、物品、情节线和关系网络，确保数百章内容连贯一致。
+storyweaver 是一个基于 Claude Code 的网文长篇写作助手插件系统。参考 ECC 架构模式和 NovelForge 设计理念，通过十维一致性校验框架，管理角色、物品、情节线和关系网络，确保数百章内容连贯一致。
 
 核心能力：
 - **状态追踪** — 自动维护角色、物品、场景、事件状态
@@ -34,7 +34,7 @@ novelai-writer 是一个基于 Claude Code 的网文长篇写作助手插件系�
 ├── CLAUDE.md              # 本文件，项目引导
 ├── README.md              # 项目介绍文档
 ├── agents/                # 5 个智能体
-├── commands/              # 16 个命令（无需 novelai- 前缀）
+├── commands/              # 16 个命令（无需 storyweaver- 前缀）
 ├── skills/                # 4 个技能
 ├── rules/
 │   ├── common/          # 5 个通用规则
@@ -163,7 +163,7 @@ novelai-writer 是一个基于 Claude Code 的网文长篇写作助手插件系�
 
 ## 文件命名约定
 
-- **文件命名**: kebab-case（`novelai-continue.md`、`state-extractor.md`）
+- **文件命名**: kebab-case（`storyweaver-continue.md`、`state-extractor.md`）
 - **YAML frontmatter**: 所有 agents、skills、commands 必须有 `description` 字段
 - **维度命名**: 英文 snake_case（`character_identity`、`temporal_sequence`）
 

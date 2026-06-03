@@ -1,19 +1,21 @@
 {
-  "name": "novelai-writer",
-  "version": "1.2.2",
-  "description": "网文长篇写作助手 — 状态追踪 + 上下文一致性引擎",
+  "name": "storyweaver",
+  "version": "1.2.3",
+  "description": "网文长篇写作助手 — 故事编织者，状态追踪 + 上下文一致性引擎",
   "author": {
-    "name": "NovelAI Writer"
+    "name": "StoryWeaver"
   },
-  "homepage": "https://github.com/wzxsph/NovelAI-Writer",
-  "repository": "https://github.com/wzxsph/NovelAI-Writer",
+  "homepage": "https://github.com/wzxsph/StoryWeaver",
+  "repository": "https://github.com/wzxsph/StoryWeaver",
   "license": "MIT",
   "keywords": [
     "claude-code",
     "writing",
     "novel",
     "web-novel",
-    "consistency"
+    "consistency",
+    "longform",
+    "storyweaver"
   ],
   "skills": [
     "./skills/"

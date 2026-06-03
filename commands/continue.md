@@ -34,7 +34,7 @@ description: 续写小说章节，基于上下文状态文档
 
 1. **读取状态文档**：从 `state/` 目录读取相关状态文件
 2. **构建 P0-P3 上下文**：参考 `@rules/novelforge/p0-p3-context.md`
-3. **加载写作规则**：参考 `@rules/novelforge/novelai-rules.md`
+3. **加载写作规则**：参考 `@rules/novelforge/storyweaver-rules.md`
 4. **注入文风参数**：如指定 `--style`，注入对应的风格提示词
 5. **生成章节内容**
 6. **保存章节正文**：⚠️ 必须保存到 `chapters/chapter_{N}.txt`

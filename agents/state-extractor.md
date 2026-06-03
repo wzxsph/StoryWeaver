@@ -97,7 +97,7 @@ description: 状态提取智能体 — 从章节文本中提取并更新状态�
 
 1. **/continue 完成后**：续写章节保存后，state-extractor 自动提取状态变化并更新文档
 2. **/loop-start 自动循环**：每个章节撰写后自动执行状态提取
-3. **手动触发**：用户执行 `/novelai update-state` 时
+3. **手动触发**：用户执行 `/storyweaver update-state` 时
 
 **自动更新流程**：
 ```
