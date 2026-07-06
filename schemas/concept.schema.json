@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://storyweaver.local/schemas/concept.schema.json",
+  "title": "StoryWeaver Concept",
+  "type": "object",
+  "required": ["id", "name", "type", "definition"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^concept_[0-9]{3,}$" },
+    "name": { "type": "string", "minLength": 1 },
+    "type": { "type": "string", "minLength": 1 },
+    "definition": { "type": "string" },
+    "rules": { "type": "array", "items": { "type": "string" } },
+    "limitations": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["draft", "locked", "deprecated"] },
+    "introduced_chapter": { "type": "number", "minimum": 0 },
+    "last_updated_chapter": { "type": "number", "minimum": 0 }
+  },
+  "additionalProperties": true
+}

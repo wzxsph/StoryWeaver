@@ -10,9 +10,11 @@ Thumbs.db
 
 # Claude Code (all local config - never commit)
 .claude/
+.agents/
 
 # Project specific
 .novelai_writer/
+snapshots/
 *.log
 
 # Node (if any)

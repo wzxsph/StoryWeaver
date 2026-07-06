@@ -1,0 +1,34 @@
+{
+  "chapter": 1,
+  "timestamp": "2026-07-06T00:00:00Z",
+  "scope": "all",
+  "passed": true,
+  "violations": [],
+  "passed_dimensions": [
+    "character_identity",
+    "character_location",
+    "temporal_sequence",
+    "item_possession",
+    "ability_usage",
+    "relationship_logic",
+    "plot_thread_progress",
+    "world_rule_compliance",
+    "emotional_continuity",
+    "factual_contradiction",
+    "scene_consistency",
+    "organization_logic",
+    "concept_definition"
+  ],
+  "chapter_contract": {
+    "goal_delivered": true,
+    "reader_promise_delivered": true,
+    "turning_point_present": true,
+    "open_loop_handling": "clear"
+  },
+  "summary": {
+    "critical_count": 0,
+    "warning_count": 0,
+    "info_count": 0,
+    "passed": true
+  }
+}

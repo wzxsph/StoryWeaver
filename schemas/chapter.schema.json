@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://storyweaver.local/schemas/chapter.schema.json",
+  "title": "StoryWeaver Chapter Contract",
+  "type": "object",
+  "required": [
+    "chapter",
+    "status",
+    "chapter_goal",
+    "reader_promise",
+    "conflict_axis",
+    "turning_point",
+    "summary",
+    "word_count",
+    "state_delta"
+  ],
+  "properties": {
+    "chapter": { "type": "number", "minimum": 1 },
+    "title": { "type": "string" },
+    "status": { "type": "string", "enum": ["planned", "draft", "verified", "revised", "locked"] },
+    "chapter_goal": { "type": "string", "minLength": 1 },
+    "reader_promise": { "type": "string", "minLength": 1 },
+    "conflict_axis": { "type": "string", "minLength": 1 },
+    "turning_point": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string" },
+    "word_count": { "type": "number", "minimum": 0 },
+    "style_tags": { "type": "array", "items": { "type": "string" } },
+    "pov_character": { "type": "string" },
+    "open_loops_introduced": { "type": "array", "items": { "type": "string" } },
+    "open_loops_advanced": { "type": "array", "items": { "type": "string" } },
+    "open_loops_resolved": { "type": "array", "items": { "type": "string" } },
+    "state_delta": {
+      "type": "object",
+      "required": [
+        "characters",
+        "items",
+        "scenes",
+        "organizations",
+        "concepts",
+        "timeline_events",
+        "plot_threads",
+        "relationships"
+      ],
+      "properties": {
+        "characters": { "type": "array", "items": { "type": "string", "pattern": "^char_[0-9]{3,}$" } },
+        "items": { "type": "array", "items": { "type": "string", "pattern": "^item_[0-9]{3,}$" } },
+        "scenes": { "type": "array", "items": { "type": "string", "pattern": "^scene_[0-9]{3,}$" } },
+        "organizations": { "type": "array", "items": { "type": "string", "pattern": "^org_[0-9]{3,}$" } },
+        "concepts": { "type": "array", "items": { "type": "string", "pattern": "^concept_[0-9]{3,}$" } },
+        "timeline_events": { "type": "array", "items": { "type": "string", "pattern": "^event_[0-9]{3,}$" } },
+        "plot_threads": { "type": "array", "items": { "type": "string", "pattern": "^plot_[0-9]{3,}$" } },
+        "relationships": { "type": "array", "items": { "type": "string", "pattern": "^rel_[0-9]{3,}$" } }
+      },
+      "additionalProperties": true
+    },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" },
+    "schema_version": { "type": "string" }
+  },
+  "additionalProperties": true
+}

@@ -2,7 +2,7 @@
 description: 列出概念设定（功法、规则、社会制度）
 ---
 
-# /storyweaver concepts
+# /storyweaver:concepts
 
 列出小说中的概念设定，如功法、规则、社会制度等。
 
@@ -32,11 +32,24 @@ description: 列出概念设定（功法、规则、社会制度）
 
 ## 数据来源
 
-从 `.storyweaver/state_document.json` 的 `concepts` 数组读取。
+从 `state/concepts/{id}.json` 读取；按 `type`、`status`、`last_updated_chapter` 筛选。
+
+优先使用确定性工具列出或查看：
+
+```bash
+node "${CLAUDE_PLUGIN_ROOT}/tools/manage-state-card.mjs" "${CLAUDE_PROJECT_DIR}" concept list
+node "${CLAUDE_PLUGIN_ROOT}/tools/manage-state-card.mjs" "${CLAUDE_PROJECT_DIR}" concept view --name "灵根复测"
+```
+
+新增基础概念卡：
+
+```bash
+node "${CLAUDE_PLUGIN_ROOT}/tools/manage-state-card.mjs" "${CLAUDE_PROJECT_DIR}" concept add --name "灵根复测" --type "制度" --description "宗门重新检测弟子灵根资质的制度" --chapter 1
+```
 
 ## 示例
 
 ```
-/storyweaver concepts
-/storyweaver concepts --type 功法
+/storyweaver:concepts
+/storyweaver:concepts --type 功法
 ```

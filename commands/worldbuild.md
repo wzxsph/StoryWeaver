@@ -2,7 +2,7 @@
 description: 根据用户描述生成小说世界观设定
 ---
 
-# /storyweaver worldbuild
+# /storyweaver:worldbuild
 
 根据用户的描述生成小说的世界观设定。
 
@@ -18,7 +18,7 @@ description: 根据用户描述生成小说世界观设定
 4. 生成主要势力/组织
 5. 生成关键地点/场景
 6. 生成重要物品/道具
-7. 将设定保存到 `.storyweaver/state_document.json`
+7. 将设定保存到 `state/metadata/project.json`、`state/concepts/`、`state/organizations/`、`state/scenes/`、`state/items/` 和 `state/outline/outline.json`
 
 ## 输出内容
 

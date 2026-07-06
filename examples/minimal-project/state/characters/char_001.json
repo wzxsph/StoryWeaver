@@ -1,0 +1,44 @@
+{
+  "id": "char_001",
+  "name": "林小雨",
+  "role": "protagonist",
+  "status": "alive",
+  "core_identity": {
+    "appearance": "外门弟子服，常把袖口攥得很紧",
+    "personality": "谨慎、敏感、遇到危险时反而冷静",
+    "background": "天剑宗外门弟子，被认为灵根普通",
+    "goals": ["隐藏玄天剑苏醒的秘密", "通过灵根复测"],
+    "secrets": ["玄天剑叫出了她的乳名"]
+  },
+  "current_state": {
+    "location": {
+      "current": "天剑宗外门祠堂",
+      "previous": "",
+      "changed_at_chapter": 1
+    },
+    "emotional_state": "警惕",
+    "physical_state": "健康",
+    "possessions": ["item_001"],
+    "abilities": [],
+    "cultivation_realm": "未入门"
+  },
+  "relationship_map": {
+    "item_001": {
+      "target_id": "item_001",
+      "relationship_type": "持有并被其识破身份",
+      "strength": 3,
+      "updated_at_chapter": 1
+    }
+  },
+  "timeline": [
+    {
+      "chapter": 1,
+      "event": "听见玄天剑残念呼唤自己的乳名",
+      "timestamp": "2026-07-06T00:00:00Z"
+    }
+  ],
+  "created_at": "2026-07-06T00:00:00Z",
+  "updated_at": "2026-07-06T00:00:00Z",
+  "last_updated_chapter": 1,
+  "schema_version": "2.0"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://storyweaver.local/schemas/timeline-event.schema.json",
+  "title": "StoryWeaver Timeline Event",
+  "type": "object",
+  "required": ["id", "title", "chapter", "description"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^event_[0-9]{3,}$" },
+    "title": { "type": "string", "minLength": 1 },
+    "chapter": { "type": "number", "minimum": 1 },
+    "timestamp": { "type": "string" },
+    "location": { "type": "string" },
+    "participants": { "type": "array", "items": { "type": "string" } },
+    "related_items": { "type": "array", "items": { "type": "string" } },
+    "plot_thread_id": { "type": ["string", "null"] },
+    "description": { "type": "string" },
+    "consequences": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

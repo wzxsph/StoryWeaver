@@ -9,7 +9,7 @@ description: 世界观构建智能体 — 从用户描述生成完整世界设�
 
 ## When to Activate
 
-- 用户要求构建世界观 `/storyweaver worldbuild`
+- 用户要求构建世界观 `/storyweaver:worldbuild`
 - 新项目初始化
 - 用户描述了新的小说设定想法
 

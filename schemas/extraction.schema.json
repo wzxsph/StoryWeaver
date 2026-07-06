@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://storyweaver.local/schemas/extraction.schema.json",
+  "title": "StoryWeaver Chapter Extraction Report",
+  "type": "object",
+  "required": [
+    "chapter",
+    "generated_at",
+    "schema_version",
+    "source_files",
+    "manuscript",
+    "mentioned_entities",
+    "state_delta_suggestion",
+    "open_loop_candidates",
+    "decisions_required",
+    "applied"
+  ],
+  "properties": {
+    "chapter": { "type": "number", "minimum": 1 },
+    "generated_at": { "type": "string", "minLength": 1 },
+    "schema_version": { "type": "string", "minLength": 1 },
+    "source_files": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "manuscript": {
+      "type": "object",
+      "required": ["path", "word_count", "paragraph_count"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "word_count": { "type": "number", "minimum": 0 },
+        "paragraph_count": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "mentioned_entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "id", "name", "mentions", "evidence"],
+        "properties": {
+          "kind": { "type": "string", "minLength": 1 },
+          "id": { "type": "string", "minLength": 1 },
+          "name": { "type": "string" },
+          "mentions": { "type": "number", "minimum": 1 },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["alias", "snippet"],
+              "properties": {
+                "alias": { "type": "string", "minLength": 1 },
+                "snippet": { "type": "string", "minLength": 1 }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "state_delta_suggestion": {
+      "type": "object",
+      "required": [
+        "characters",
+        "items",
+        "scenes",
+        "organizations",
+        "concepts",
+        "timeline_events",
+        "plot_threads",
+        "relationships"
+      ],
+      "properties": {
+        "characters": { "type": "array", "items": { "type": "string" } },
+        "items": { "type": "array", "items": { "type": "string" } },
+        "scenes": { "type": "array", "items": { "type": "string" } },
+        "organizations": { "type": "array", "items": { "type": "string" } },
+        "concepts": { "type": "array", "items": { "type": "string" } },
+        "timeline_events": { "type": "array", "items": { "type": "string" } },
+        "plot_threads": { "type": "array", "items": { "type": "string" } },
+        "relationships": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "open_loop_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["text", "source"],
+        "properties": {
+          "text": { "type": "string", "minLength": 1 },
+          "source": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "decisions_required": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "message"],
+        "properties": {
+          "code": { "type": "string", "minLength": 1 },
+          "message": { "type": "string", "minLength": 1 },
+          "source": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "applied": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

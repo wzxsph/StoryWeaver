@@ -1,0 +1,10 @@
+{
+  "id": "plot_001",
+  "name": "玄天剑为何认识林小雨",
+  "status": "active",
+  "progress": 5,
+  "description": "玄天剑残念知道林小雨隐藏身份，暗示主角身世与宗门旧案有关。",
+  "started_chapter": 1,
+  "last_updated_chapter": 1,
+  "related_events": ["event_001"]
+}

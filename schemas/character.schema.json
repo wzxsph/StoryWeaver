@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://storyweaver.local/schemas/character.schema.json",
+  "title": "StoryWeaver Character",
+  "type": "object",
+  "required": ["id", "name", "role", "current_state"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^char_[0-9]{3,}$" },
+    "name": { "type": "string", "minLength": 1 },
+    "role": { "type": "string", "minLength": 1 },
+    "status": { "type": "string" },
+    "core_identity": { "type": "object" },
+    "current_state": { "type": "object" },
+    "relationship_map": { "type": "object" },
+    "timeline": { "type": "array" },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" },
+    "last_updated_chapter": { "type": "number", "minimum": 0 },
+    "schema_version": { "type": "string" }
+  },
+  "additionalProperties": true
+}

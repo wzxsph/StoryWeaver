@@ -1,0 +1,182 @@
+{
+  "generated_at": "2026-07-06T00:00:00Z",
+  "schema_version": "2.0",
+  "summary": {
+    "characters": 1,
+    "items": 1,
+    "scenes": 1,
+    "organizations": 1,
+    "concepts": 1,
+    "timeline_events": 1,
+    "plot_threads": 1,
+    "relationships": 1,
+    "chapters": 1,
+    "briefs": 1,
+    "extractions": 1,
+    "reviews": 1,
+    "gates": 1
+  },
+  "latest_chapter": 1,
+  "entities": [
+    {
+      "id": "char_001",
+      "kind": "character",
+      "name": "林小雨",
+      "source": "state/characters/char_001.json",
+      "last_updated_chapter": 1,
+      "refs_in": [
+        "state/chapters/chapter_1.json",
+        "state/chapters/chapter_1/brief.json",
+        "state/chapters/chapter_1/extraction.json",
+        "state/items/item_001.json",
+        "state/metadata/index.json",
+        "state/organizations/org_001.json",
+        "state/outline/chapter_1.json",
+        "state/relationships/rel_001.json",
+        "state/scenes/scene_001.json",
+        "state/timeline/event_001.json"
+      ]
+    },
+    {
+      "id": "concept_001",
+      "kind": "concept",
+      "name": "灵根复测",
+      "source": "state/concepts/concept_001.json",
+      "last_updated_chapter": 1,
+      "refs_in": [
+        "state/chapters/chapter_1.json",
+        "state/chapters/chapter_1/brief.json",
+        "state/chapters/chapter_1/extraction.json",
+        "state/metadata/index.json",
+        "state/outline/chapter_1.json"
+      ]
+    },
+    {
+      "id": "item_001",
+      "kind": "item",
+      "name": "玄天剑",
+      "source": "state/items/item_001.json",
+      "last_updated_chapter": null,
+      "refs_in": [
+        "state/chapters/chapter_1.json",
+        "state/chapters/chapter_1/brief.json",
+        "state/chapters/chapter_1/extraction.json",
+        "state/characters/char_001.json",
+        "state/metadata/index.json",
+        "state/outline/chapter_1.json",
+        "state/relationships/rel_001.json",
+        "state/scenes/scene_001.json",
+        "state/timeline/event_001.json"
+      ]
+    },
+    {
+      "id": "org_001",
+      "kind": "organization",
+      "name": "天剑宗",
+      "source": "state/organizations/org_001.json",
+      "last_updated_chapter": null,
+      "refs_in": [
+        "state/chapters/chapter_1.json",
+        "state/chapters/chapter_1/brief.json",
+        "state/metadata/index.json",
+        "state/outline/chapter_1.json"
+      ]
+    },
+    {
+      "id": "plot_001",
+      "kind": "plot_thread",
+      "name": "玄天剑为何认识林小雨",
+      "source": "state/plot_threads/plot_001.json",
+      "last_updated_chapter": 1,
+      "refs_in": [
+        "state/chapters/chapter_1.json",
+        "state/chapters/chapter_1/brief.json",
+        "state/metadata/index.json",
+        "state/outline/chapter_1.json",
+        "state/timeline/event_001.json"
+      ]
+    },
+    {
+      "id": "rel_001",
+      "kind": "relationship",
+      "name": "char_001 -> item_001",
+      "source": "state/relationships/rel_001.json",
+      "last_updated_chapter": 1,
+      "refs_in": [
+        "state/chapters/chapter_1.json",
+        "state/chapters/chapter_1/brief.json",
+        "state/metadata/index.json",
+        "state/outline/chapter_1.json"
+      ]
+    },
+    {
+      "id": "scene_001",
+      "kind": "scene",
+      "name": "天剑宗外门祠堂",
+      "source": "state/scenes/scene_001.json",
+      "last_updated_chapter": null,
+      "refs_in": [
+        "state/chapters/chapter_1.json",
+        "state/chapters/chapter_1/brief.json",
+        "state/metadata/index.json",
+        "state/organizations/org_001.json",
+        "state/outline/chapter_1.json"
+      ]
+    },
+    {
+      "id": "event_001",
+      "kind": "timeline_event",
+      "name": "玄天剑苏醒",
+      "source": "state/timeline/event_001.json",
+      "last_updated_chapter": 1,
+      "refs_in": [
+        "state/chapters/chapter_1.json",
+        "state/chapters/chapter_1/brief.json",
+        "state/metadata/index.json",
+        "state/outline/chapter_1.json",
+        "state/plot_threads/plot_001.json"
+      ]
+    }
+  ],
+  "chapters": [
+    {
+      "chapter": 1,
+      "title": "玄天剑醒来",
+      "status": "verified",
+      "source": "state/chapters/chapter_1.json",
+      "has_manuscript": true,
+      "has_brief": true,
+      "has_extraction": true,
+      "has_review": true,
+      "has_gate": true,
+      "word_count": 156,
+      "state_delta_counts": {
+        "characters": 1,
+        "items": 1,
+        "scenes": 1,
+        "organizations": 1,
+        "concepts": 1,
+        "timeline_events": 1,
+        "plot_threads": 1,
+        "relationships": 1
+      },
+      "gate_status": "passed",
+      "gate_score": 100
+    }
+  ],
+  "open_loops": [
+    {
+      "chapter": 1,
+      "status": "introduced",
+      "text": "灵根复测会不会发现玄天剑异动",
+      "source": "state/chapters/chapter_1.json"
+    },
+    {
+      "chapter": 1,
+      "status": "introduced",
+      "text": "玄天剑为何知道林小雨的乳名",
+      "source": "state/chapters/chapter_1.json"
+    }
+  ],
+  "warnings": []
+}

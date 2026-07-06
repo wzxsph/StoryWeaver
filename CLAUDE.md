@@ -1,188 +1,73 @@
-# storyweaver 项目引导
+# StoryWeaver Claude Code 引导
 
-> **版本**: 1.2.3
+> 版本：1.2.3
 
-本项目是 storyweaver 的项目级学习文档，参考 ECC (Everything Claude Code) 架构模式构建。
+StoryWeaver 是一个 Claude Code 网文长篇写作插件。你在本项目中工作时，应把它当作可分发插件维护，而不是单个项目里的临时 `.claude` 配置。
 
-## 项目概述
+## 工作原则
 
-storyweaver 是一个基于 Claude Code 的网文长篇写作助手插件系统。参考 ECC 架构模式和 NovelForge 设计理念，通过十维一致性校验框架，管理角色、物品、情节线和关系网络，确保数百章内容连贯一致。
+- 插件根目录是仓库根目录，`.claude-plugin/` 只放 manifest 和 marketplace 元数据。
+- 技能使用 `skills/<name>/SKILL.md` 目录结构。
+- 命令使用 `commands/*.md`，安装后以 `/storyweaver:<command>` 暴露。
+- Agents 放在 `agents/*.md`。
+- `state/` 分布式 JSON 是唯一故事状态来源。
+- 章节正文保存到 `chapters/chapter_{N}.txt`。
+- 每章必须保存章节契约到 `state/chapters/chapter_{N}.json`。
+- 一致性校验报告保存到 `state/chapters/chapter_{N}/review.json`。
+- 修订历史保存到 `state/chapters/chapter_{N}/revision_history.json`。
+- 状态结构的机器约束位于 `schemas/`；修改状态字段时必须同步 schema、规则文档和 `examples/minimal-project/`。
 
-核心能力：
-- **状态追踪** — 自动维护角色、物品、场景、事件状态
-- **上下文一致性** — 十维一致性校验引擎 + 扩展维度
-- **层级上下文注入** — P0-P3 优先级注入，确保长篇连贯
-- **增量状态更新** — 续写后自动提取并更新状态
-- **冲突警告机制** — 一致性校验发现问题时向用户发出明确警告
-- **多智能体协作** — 规划/写作/校验/提取/构建分离
-- **雪花创作法** — 系统化项目启动流程
-- **文风控制** — 支持幽默、动人、口语化等风格注入
+## 核心流程
 
-## Tech Stack
+1. `/storyweaver:init --template snowflake`
+2. `/storyweaver:import --path drafts/book.txt`（已有旧稿/存稿时）
+3. `/storyweaver:plan --type outline`
+4. `/storyweaver:worldbuild`
+5. `/storyweaver:character add --name "主角名" --role protagonist`
+6. `/storyweaver:brief --chapter 1 --words 3000`
+7. `/storyweaver:continue --chapter 1 --words 3000`
+8. `/storyweaver:verify --chapter 1 --scope all`
+9. `/storyweaver:queue`
+10. `/storyweaver:revise --chapter 1`（如有 critical/warning）
+11. `/storyweaver:index`
 
-| Layer | Technology |
-|-------|-----------|
-| 格式 | Markdown + YAML frontmatter |
-| 插件系统 | ECC (Everything Claude Code) |
-| 状态存储 | JSON 分布式文件（state/ 目录） |
-| 内容语言 | 中文（网文内容） |
+## 状态与一致性
 
-## 目录结构
+P0-P3 上下文顺序：
 
-```
-./
-├── CLAUDE.md              # 本文件，项目引导
-├── README.md              # 项目介绍文档
-├── agents/                # 5 个智能体
-├── commands/              # 16 个命令（无需 storyweaver- 前缀）
-├── skills/                # 4 个技能
-├── rules/
-│   ├── common/          # 5 个通用规则
-│   └── novelforge/      # 6 个写作规则
-├── prompts/              # 16 个提示词模板
-├── knowledge/            # 4 个知识库
-├── workflows/            # 3 个工作流
-├── contexts/            # 3 个模式定义
-├── state/               # 分布式状态存储
-├── chapters/            # 章节正文存储
-└── workflows/            # 工作流（雪花创作法等）
-```
+| 优先级 | 内容 |
+|--------|------|
+| P0 | 核心设定、世界规则、锁定 canon |
+| P1 | 当前角色、位置、情绪、物品、活跃情节线 |
+| P2 | 最近三章事件与变化 |
+| P3 | 背景设定、伏笔、休眠情节线 |
 
-## 核心概念
+章节上下文包保存到 `state/chapters/chapter_{N}/brief.json`，用于审计每章实际注入的 P0-P3 写作输入。
+大纲保存到 `state/outline/`；章节大纲必须能落到章节契约，供 brief 和正文生成继续使用。
+全局状态索引保存到 `state/metadata/index.json`，用于快速查看章节健康状态、实体反向引用和悬念推进。
+修订行动队列保存到 `state/metadata/action_queue.json`，用于把审阅报告和状态警告汇总成下一步任务。
 
-### P0-P3 层级上下文
+十三维一致性：
 
-| 优先级 | 名称 | 内容 |
-|--------|------|------|
-| P0 | Hard Constraints | 核心设定、世界规则 |
-| P1 | Current State | 当前位置、情绪、物品 |
-| P2 | Near Context | 最近3章事件 |
-| P3 | Distant Reference | 背景、伏笔 |
+1. `character_identity`
+2. `character_location`
+3. `temporal_sequence`
+4. `item_possession`
+5. `ability_usage`
+6. `relationship_logic`
+7. `plot_thread_progress`
+8. `world_rule_compliance`
+9. `emotional_continuity`
+10. `factual_contradiction`
+11. `scene_consistency`
+12. `organization_logic`
+13. `concept_definition`
 
-### 十维一致性 + 扩展维度
+## 本地验证
 
-**基础十维：**
-1. character_identity — 角色外貌/性格
-2. character_location — 位置一致性
-3. temporal_sequence — 时间顺序
-4. item_possession — 物品归属
-5. ability_usage — 能力使用
-6. relationship_logic — 关系逻辑
-7. plot_thread_progress — 情节推进
-8. world_rule_compliance — 世界规则
-9. emotional_continuity — 情感过渡
-10. factual_contradiction — 事实矛盾
-
-**扩展维度（场景/组织/概念）：**
-11. scene_consistency — 场景描述一致性
-12. organization_logic — 组织架构逻辑
-13. concept_definition — 概念定义一致性
-
-### 分布式状态存储
-
-```json
-{
-  "version": "2.0",
-  "metadata": { "title": "", "genre": [], "style": "", "author": "", "word_count_target": 0, "template": "" },
-  "outline": {
-    "outline.json": {},      // 整体大纲
-    "volume_{N}.json": {},   // 分卷大纲
-    "chapter_{N}.json": {}   // 章节大纲
-  },
-  "characters": [],
-  "scenes": [],
-  "organizations": [],
-  "concepts": [],
-  "items": [],
-  "chapters": [],
-  "timeline": [],
-  "plot_threads": [],
-  "relationships": []
-}
+```powershell
+.\tools\validate-storyweaver.ps1 -Strict
 ```
 
-## 关键命令
-
-### 初始化与状态
-| 命令 | 说明 |
-|------|------|
-| `/init --template snowflake` | 初始化工作区 |
-| `/status` | 查看项目状态概览 |
-| `/loop-start` | 启动自动写小说循环 |
-| `/loop-status` | 查看循环状态 |
-
-### 规划
-| 命令 | 说明 |
-|------|------|
-| `/plan --type outline` | 整体大纲（保存到 state/outline/outline.json） |
-| `/plan --type volume --scope 1-30` | 分卷大纲（保存到 state/outline/volume_{N}.json） |
-| `/plan --type chapter --scope 5` | 章节大纲（保存到 state/outline/chapter_{N}.json） |
-
-### 章节创作
-| 命令 | 说明 |
-|------|------|
-| `/continue --chapter N --words 3000` | 续写章节 |
-| `/continue --chapter N --mode polish` | 润色章节 |
-| `/continue --chapter N --mode expand` | 扩写大纲为正文 |
-| `/continue --chapter N --style 幽默,动人` | 续写并注入指定文风 |
-| `/verify --chapter N --scope all` | 校验一致性 |
-| `/revise --chapter N` | 根据审阅报告修正 |
-
-### 文风控制参数
-
-`/continue --style` 支持以下参数（多个用逗号分隔）：
-- `幽默` — 添加幽默、诙谐元素
-- `动人` — 增加情感张力，打动读者
-- `口语化` — 使用更口语化的表达
-- `古风` — 古风文体（适用于仙侠/古代背景）
-- `燃向` — 高潮情节专用，增强张力
-
-### 自动循环（逐章执行）
-| 命令 | 说明 |
-|------|------|
-| `/loop-start --scope chapter_range --from 1 --to 30` | 启动循环 |
-| `/loop-status` | 查看状态 |
-
-### 状态查看
-| 命令 | 说明 |
-|------|------|
-| `/timeline --chapter N` | 事件时间线 |
-| `/items --type 法宝` | 物品设定 |
-| `/plot --status active` | 情节线状态 |
-| `/scenes --character "林小雨"` | 场景列表 |
-| `/organizations --type 门派` | 组织势力 |
-| `/concepts --type 功法` | 概念设定 |
-| `/chapters --range 1-30` | 章节概览 |
-
-### 角色管理
-| 命令 | 说明 |
-|------|------|
-| `/character add --name "张三" --role protagonist` | 添加角色 |
-| `/character list` | 列出所有角色 |
-| `/character update --name "张三" --field emotional_state --value "开心"` | 更新角色状态 |
-
-## 文件命名约定
-
-- **文件命名**: kebab-case（`storyweaver-continue.md`、`state-extractor.md`）
-- **YAML frontmatter**: 所有 agents、skills、commands 必须有 `description` 字段
-- **维度命名**: 英文 snake_case（`character_identity`、`temporal_sequence`）
-
-## 组件引用格式
-
-在 Agent/Skill/Rule 文件中引用其他组件时使用：
-- `@rules/novelforge/p0-p3-context.md`
-- `@prompts/内容生成.txt`
-- `@workflows/雪花创作法.md`
-- `@KB{作品标签}`
-
-## 参考文档
-
-- [README.md](README.md) — 项目完整介绍
-- [架构概述](docs/architecture/overview.md)
-- [工作流系统](docs/workflow/overview.md)
-- [一致性校验](docs/novel/consistency.md)
-
-## 参考
-
-- [Everything Claude Code (ECC)](https://github.com/affaan-m/ECC) — 架构参考
-- [NovelForge](https://github.com/RhythmicWave/NovelForge) — 原始项目
+验证内容包括 Claude Code 插件 strict 校验、JSON 校验、状态 schema 校验、状态图引用完整性、init project smoke test、outline planner smoke test、brief 构建器 smoke test、index 构建器 smoke test、manuscript import smoke test、action queue smoke test、revision history smoke test、活跃组件旧状态引用扫描和技能目录结构检查。
+同时会校验根目录 `state/` 和 `examples/*/state/` 是否符合 `schemas/`，以及跨文件引用是否能解析到真实实体。

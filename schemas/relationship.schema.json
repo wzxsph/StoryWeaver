@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://storyweaver.local/schemas/relationship.schema.json",
+  "title": "StoryWeaver Relationship",
+  "type": "object",
+  "required": ["id", "source_id", "target_id", "relationship_type"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^rel_[0-9]{3,}$" },
+    "source_id": { "type": "string", "minLength": 1 },
+    "target_id": { "type": "string", "minLength": 1 },
+    "relationship_type": { "type": "string", "minLength": 1 },
+    "strength": { "type": "number" },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "last_updated_chapter": { "type": "number", "minimum": 0 }
+  },
+  "additionalProperties": true
+}

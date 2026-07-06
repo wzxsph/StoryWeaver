@@ -2,7 +2,7 @@
 description: 列出场景及其状态
 ---
 
-# /storyweaver scenes
+# /storyweaver:scenes
 
 列出所有场景及其当前状态。
 
@@ -30,11 +30,24 @@ description: 列出场景及其状态
 
 ## 数据来源
 
-从 `.storyweaver/state_document.json` 的 `scenes` 数组读取。
+从 `state/scenes/{id}.json` 读取；按 `characters_present`、`location`、`time` 筛选。
+
+优先使用确定性工具列出或查看：
+
+```bash
+node "${CLAUDE_PLUGIN_ROOT}/tools/manage-state-card.mjs" "${CLAUDE_PROJECT_DIR}" scene list
+node "${CLAUDE_PLUGIN_ROOT}/tools/manage-state-card.mjs" "${CLAUDE_PROJECT_DIR}" scene view --name "天剑宗外门祠堂"
+```
+
+新增基础场景卡：
+
+```bash
+node "${CLAUDE_PLUGIN_ROOT}/tools/manage-state-card.mjs" "${CLAUDE_PROJECT_DIR}" scene add --name "天剑宗外门祠堂" --type "宗门场景" --description "外门弟子领取杂役任务的地方"
+```
 
 ## 示例
 
 ```
-/storyweaver scenes
-/storyweaver scenes --character "林小雨"
+/storyweaver:scenes
+/storyweaver:scenes --character "林小雨"
 ```

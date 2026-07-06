@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://storyweaver.local/schemas/brief.schema.json",
+  "title": "StoryWeaver Chapter Brief",
+  "type": "object",
+  "required": [
+    "chapter",
+    "generated_at",
+    "purpose",
+    "source_files",
+    "context_budget",
+    "p0",
+    "p1",
+    "p2",
+    "p3",
+    "must_include",
+    "writing_directives",
+    "exclusions",
+    "open_questions"
+  ],
+  "properties": {
+    "chapter": { "type": "number", "minimum": 1 },
+    "generated_at": { "type": "string", "minLength": 1 },
+    "purpose": { "type": "string", "minLength": 1 },
+    "source_files": { "type": "array", "items": { "type": "string" } },
+    "context_budget": {
+      "type": "object",
+      "required": ["target_words", "max_context_items"],
+      "properties": {
+        "target_words": { "type": "number", "minimum": 0 },
+        "max_context_items": { "type": "number", "minimum": 1 }
+      },
+      "additionalProperties": true
+    },
+    "p0": { "$ref": "#/$defs/contextItems" },
+    "p1": { "$ref": "#/$defs/contextItems" },
+    "p2": { "$ref": "#/$defs/contextItems" },
+    "p3": { "$ref": "#/$defs/contextItems" },
+    "must_include": {
+      "type": "object",
+      "required": ["characters", "items", "scenes", "organizations", "concepts", "timeline_events", "plot_threads", "relationships"],
+      "properties": {
+        "characters": { "type": "array", "items": { "type": "string", "pattern": "^char_[0-9]{3,}$" } },
+        "items": { "type": "array", "items": { "type": "string", "pattern": "^item_[0-9]{3,}$" } },
+        "scenes": { "type": "array", "items": { "type": "string", "pattern": "^scene_[0-9]{3,}$" } },
+        "organizations": { "type": "array", "items": { "type": "string", "pattern": "^org_[0-9]{3,}$" } },
+        "concepts": { "type": "array", "items": { "type": "string", "pattern": "^concept_[0-9]{3,}$" } },
+        "timeline_events": { "type": "array", "items": { "type": "string", "pattern": "^event_[0-9]{3,}$" } },
+        "plot_threads": { "type": "array", "items": { "type": "string", "pattern": "^plot_[0-9]{3,}$" } },
+        "relationships": { "type": "array", "items": { "type": "string", "pattern": "^rel_[0-9]{3,}$" } }
+      },
+      "additionalProperties": true
+    },
+    "writing_directives": { "type": "array", "items": { "type": "string" } },
+    "exclusions": { "type": "array", "items": { "type": "string" } },
+    "open_questions": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "contextItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "summary", "source"],
+        "properties": {
+          "kind": { "type": "string", "minLength": 1 },
+          "id": { "type": ["string", "null"] },
+          "name": { "type": "string" },
+          "summary": { "type": "string", "minLength": 1 },
+          "source": { "type": "string", "minLength": 1 },
+          "priority": { "type": "number", "minimum": 0 }
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://storyweaver.local/schemas/chapter-gate.schema.json",
+  "title": "StoryWeaver Chapter Gate",
+  "type": "object",
+  "required": [
+    "chapter",
+    "generated_at",
+    "schema_version",
+    "result",
+    "metrics",
+    "files",
+    "blockers",
+    "warnings",
+    "source_files"
+  ],
+  "properties": {
+    "chapter": { "type": "number", "minimum": 1 },
+    "generated_at": { "type": "string", "minLength": 1 },
+    "schema_version": { "type": "string", "minLength": 1 },
+    "result": {
+      "type": "object",
+      "required": ["status", "passed", "score"],
+      "properties": {
+        "status": { "type": "string", "enum": ["passed", "warning", "blocked"] },
+        "passed": { "type": "boolean" },
+        "score": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "actual_word_count",
+        "recorded_word_count",
+        "min_word_count",
+        "paragraph_count",
+        "review_critical",
+        "review_warning",
+        "review_info",
+        "open_queue_critical",
+        "open_queue_warning",
+        "open_queue_info"
+      ],
+      "properties": {
+        "actual_word_count": { "type": "number", "minimum": 0 },
+        "recorded_word_count": { "type": "number", "minimum": 0 },
+        "min_word_count": { "type": "number", "minimum": 0 },
+        "paragraph_count": { "type": "number", "minimum": 0 },
+        "review_critical": { "type": "number", "minimum": 0 },
+        "review_warning": { "type": "number", "minimum": 0 },
+        "review_info": { "type": "number", "minimum": 0 },
+        "open_queue_critical": { "type": "number", "minimum": 0 },
+        "open_queue_warning": { "type": "number", "minimum": 0 },
+        "open_queue_info": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "path", "exists"],
+        "properties": {
+          "kind": { "type": "string", "minLength": 1 },
+          "path": { "type": "string", "minLength": 1 },
+          "exists": { "type": "boolean" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "message", "source"],
+        "properties": {
+          "code": { "type": "string", "minLength": 1 },
+          "message": { "type": "string", "minLength": 1 },
+          "source": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "message", "source"],
+        "properties": {
+          "code": { "type": "string", "minLength": 1 },
+          "message": { "type": "string", "minLength": 1 },
+          "source": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "source_files": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "promoted_to": { "type": "string", "enum": ["", "verified", "revised", "locked"] }
+  },
+  "additionalProperties": true
+}

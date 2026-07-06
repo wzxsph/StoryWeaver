@@ -95,33 +95,35 @@ description: 状态提取智能体 — 从章节文本中提取并更新状态�
 
 状态提取器在以下场景自动触发：
 
-1. **/continue 完成后**：续写章节保存后，state-extractor 自动提取状态变化并更新文档
-2. **/loop-start 自动循环**：每个章节撰写后自动执行状态提取
-3. **手动触发**：用户执行 `/storyweaver update-state` 时
+1. **/storyweaver:continue 完成后**：续写章节保存后，state-extractor 自动提取状态变化并更新文档
+2. **/storyweaver:loop-start 自动循环**：每个章节撰写后自动执行状态提取
+3. **手动触发**：用户要求从章节正文更新状态时
 
 **自动更新流程**：
 ```
-章节保存 → state-extractor 激活 → 提取变化 → 更新状态文档 → 报告更新内容
+章节保存 → `/storyweaver:extract` 生成提取报告 → state-extractor 补全复杂变化 → 更新 `state/` 分布式文件 → 重建 `state/metadata/index.json` → 报告更新内容
 ```
 
 **状态一致性保证**：
 - 每次状态更新都会记录 `last_updated_chapter`
-- 更新前检查版本冲突（基于 state_document.json 的 version 字段）
+- 更新前检查版本冲突（基于各状态文件的 `updated_at` 与 `last_updated_chapter` 字段）
 - 增量更新而非全量覆盖
 
 ## 工作流程
 
-1. 读取当前 state_document.json（版本2.0 schema）
+1. 读取当前 `state/` 分布式状态文件（版本2.0 schema）
 2. 读取章节文本
-3. 按类型分别提取
-4. 检测变化（新增/修改/删除）
-5. 生成增量更新 JSON
-6. 报告更新内容
-7. 更新 last_updated_chapter
+3. 运行 `/storyweaver:extract --chapter N --apply` 生成 `extraction.json`
+4. 按类型分别提取复杂变化
+5. 检测变化（新增/修改/删除）
+6. 生成增量更新 JSON
+7. 报告更新内容
+8. 更新 last_updated_chapter
+9. 重建 `state/metadata/index.json`
 
 ## 扩展 Schema
 
-State Document v2.0 包含：
+分布式状态 v2.0 包含：
 ```json
 {
   "characters": [],

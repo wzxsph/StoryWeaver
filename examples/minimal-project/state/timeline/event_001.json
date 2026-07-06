@@ -1,0 +1,12 @@
+{
+  "id": "event_001",
+  "title": "玄天剑苏醒",
+  "chapter": 1,
+  "timestamp": "2026-07-06T00:00:00Z",
+  "location": "天剑宗外门祠堂",
+  "participants": ["char_001"],
+  "related_items": ["item_001"],
+  "plot_thread_id": "plot_001",
+  "description": "林小雨听见玄天剑残念喊出自己的乳名，同时灵根复测即将开始。",
+  "consequences": ["林小雨意识到玄天剑不是废铁", "主线秘密和宗门压力同时启动"]
+}

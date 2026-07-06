@@ -1,7 +1,9 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "storyweaver",
+  "displayName": "StoryWeaver",
   "version": "1.2.3",
-  "description": "网文长篇写作助手 — 故事编织者，状态追踪 + 上下文一致性引擎",
+  "description": "Claude Code 网文长篇创作插件：分布式状态、P0-P3 上下文、逐章续写、十三维一致性校验",
   "author": {
     "name": "StoryWeaver"
   },
@@ -17,13 +19,7 @@
     "longform",
     "storyweaver"
   ],
-  "skills": [
-    "./skills/"
-  ],
-  "commands": [
-    "./commands/"
-  ],
-  "rules": [
-    "./rules/"
-  ]
+  "defaultEnabled": true,
+  "skills": "./skills/",
+  "commands": "./commands/"
 }

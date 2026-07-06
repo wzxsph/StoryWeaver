@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://storyweaver.local/schemas/item.schema.json",
+  "title": "StoryWeaver Item",
+  "type": "object",
+  "required": ["id", "name", "type", "description", "current_state"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^item_[0-9]{3,}$" },
+    "name": { "type": "string", "minLength": 1 },
+    "type": { "type": "string", "minLength": 1 },
+    "description": { "type": "string" },
+    "current_holder": { "type": ["string", "null"] },
+    "previous_holders": { "type": "array", "items": { "type": "string" } },
+    "abilities": { "type": "array", "items": { "type": "string" } },
+    "limitations": { "type": "array", "items": { "type": "string" } },
+    "current_state": { "type": "string" },
+    "significant_events": { "type": "array" }
+  },
+  "additionalProperties": true
+}

@@ -2,7 +2,7 @@
 description: 校验章节一致性并保存审阅报告
 ---
 
-# /verify
+# /storyweaver:verify
 
 校验章节一致性，检测角色状态、物品归属、时间线等矛盾。
 
@@ -22,6 +22,7 @@ description: 校验章节一致性并保存审阅报告
 3. **执行校验**：按照十维框架逐项检查
 4. **生成报告**：输出格式化的审阅报告
 5. **保存报告**：⚠️ 必须保存到 `state/chapters/chapter_{N}/review.json`
+6. **刷新修订队列**：执行 `/storyweaver:queue`，更新 `state/metadata/action_queue.json`
 
 ## 校验维度
 
@@ -101,28 +102,31 @@ description: 校验章节一致性并保存审阅报告
 }
 ```
 4. **验证保存**：保存后必须验证文件已创建
+5. **刷新队列**：保存后必须运行 `/storyweaver:queue`
+6. **检查闸门**：队列刷新后运行 `/storyweaver:gate --chapter N`
 
 ## 严重级别
 
 | 级别 | 说明 | 处理方式 |
 |------|------|----------|
-| **critical** | 必须修复 | 使用 `/revise --chapter N` 修复 |
-| **warning** | 建议检查 | 使用 `/revise --chapter N --fix dimension` 修复 |
+| **critical** | 必须修复 | 使用 `/storyweaver:revise --chapter N` 修复 |
+| **warning** | 建议检查 | 使用 `/storyweaver:revise --chapter N --fix dimension` 修复 |
 | **info** | 仅供参考 | 可忽略 |
 
 ## 下一步
 
-发现问题后，使用 `/revise --chapter N` 修复：
+如果存在 critical，使用 `/storyweaver:revise --chapter N` 修复；如果没有 critical，运行 gate 推进章节状态：
 
 ```bash
-/revise --chapter 5
-/revise --chapter 5 --fix character_identity
+/storyweaver:revise --chapter 5
+/storyweaver:revise --chapter 5 --fix character_identity
+/storyweaver:gate --chapter 5 --promote verified
 ```
 
 ## 示例
 
 ```
-/verify --chapter 5
-/verify --chapter 5 --scope extended
-/verify --chapter 5 --file chapters/chapter_5.txt
+/storyweaver:verify --chapter 5
+/storyweaver:verify --chapter 5 --scope extended
+/storyweaver:verify --chapter 5 --file chapters/chapter_5.txt
 ```

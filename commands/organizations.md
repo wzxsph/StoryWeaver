@@ -2,7 +2,7 @@
 description: 列出组织/势力
 ---
 
-# /storyweaver organizations
+# /storyweaver:organizations
 
 列出小说中的组织、势力、门派等。
 
@@ -30,7 +30,20 @@ description: 列出组织/势力
 
 ## 数据来源
 
-从 `.storyweaver/state_document.json` 的 `organizations` 数组读取。
+从 `state/organizations/{id}.json` 读取；按 `type`、`location`、`status` 筛选。
+
+优先使用确定性工具列出或查看：
+
+```bash
+node "${CLAUDE_PLUGIN_ROOT}/tools/manage-state-card.mjs" "${CLAUDE_PROJECT_DIR}" organization list
+node "${CLAUDE_PLUGIN_ROOT}/tools/manage-state-card.mjs" "${CLAUDE_PROJECT_DIR}" organization view --name "天剑宗"
+```
+
+新增基础组织卡：
+
+```bash
+node "${CLAUDE_PLUGIN_ROOT}/tools/manage-state-card.mjs" "${CLAUDE_PROJECT_DIR}" organization add --name "天剑宗" --type "门派" --description "以剑修传承立宗的修仙门派"
+```
 
 ## 世界观构建
 
@@ -39,6 +52,6 @@ description: 列出组织/势力
 ## 示例
 
 ```
-/storyweaver organizations
-/storyweaver organizations --type 门派
+/storyweaver:organizations
+/storyweaver:organizations --type 门派
 ```

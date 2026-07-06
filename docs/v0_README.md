@@ -1,6 +1,8 @@
 # 入门指南：StoryWeaver
 
 > ⚠️ **本项目仍处于测试开发期**，存在诸多不完善之处，欢迎批评指正。README 中也可能存在表述不清的地方，请以源代码为准。
+>
+> 历史文档：本文件记录 v0 单文件状态和旧 `/storyweaver ...` 命令形态，仅供迁移参考。当前插件架构以仓库根 README、`/storyweaver:<command>` 命名空间、`state/` 分布式 JSON、`schemas/` 和 `examples/minimal-project/` 为准。
 
 ## 概述
 

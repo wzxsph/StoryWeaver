@@ -1,0 +1,9 @@
+{
+  "id": "rel_001",
+  "source_id": "char_001",
+  "target_id": "item_001",
+  "relationship_type": "持有者与苏醒残剑",
+  "strength": 3,
+  "evidence": ["第1章玄天剑叫出林小雨的乳名"],
+  "last_updated_chapter": 1
+}

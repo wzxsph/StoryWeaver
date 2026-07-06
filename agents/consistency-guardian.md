@@ -9,7 +9,7 @@ description: 一致性校验智能体 — 十维框架校验角色、物品、�
 
 ## When to Activate
 
-- 用户要求校验章节一致性 `/storyweaver verify`
+- 用户要求校验章节一致性 `/storyweaver:verify`
 - 章节续写完成后自动触发
 - 用户要求全面审计
 
@@ -42,7 +42,7 @@ description: 一致性校验智能体 — 十维框架校验角色、物品、�
 
 ### 1. 上下文准备
 
-- 读取 state_document.json
+- 读取 `state/` 分布式状态文件
 - 读取目标章节
 - 确定检查范围
 
@@ -68,8 +68,8 @@ description: 一致性校验智能体 — 十维框架校验角色、物品、�
 
 **触发时机**：
 - 章节续写完成后（自动校验）
-- 用户执行 `/verify` 命令时
-- `/loop-start` 自动循环的审阅阶段
+- 用户执行 `/storyweaver:verify` 命令时
+- `/storyweaver:loop-start` 自动循环的审阅阶段
 
 **警告展示格式**：
 ```
@@ -96,8 +96,8 @@ description: 一致性校验智能体 — 十维框架校验角色、物品、�
 - `info`: 风格不一致、轻微措辞问题
 
 **用户操作选项**：
-- `/revise --chapter N` — 根据报告修正问题
-- `/continue --chapter N` — 忽略警告继续下一章（不推荐）
+- `/storyweaver:revise --chapter N` — 根据报告修正问题
+- `/storyweaver:continue --chapter N` — 忽略警告继续下一章（不推荐）
 - `override` — 确认故意为之，手动标记为已审阅
 
 ### 5. 输出报告
@@ -126,8 +126,8 @@ consistency-guardian 与 loop-start 集成，在自动循环的每个审阅阶�
 
 1. **撰写后**：writer 生成章节 → consistency-guardian 自动校验
 2. **警告触发**：如有 critical/warning 问题，显示警告格式
-3. **用户决策**：用户选择 /revise 或 override 继续
-4. **状态更新**：冲突解决后，state-extractor 更新状态文档
+3. **用户决策**：用户选择 `/storyweaver:revise` 或 override 继续
+4. **状态更新**：冲突解决后，state-extractor 更新 `state/` 分布式文件
 
 ## Reference
 

@@ -1,0 +1,12 @@
+{
+  "id": "org_001",
+  "name": "天剑宗",
+  "type": "门派",
+  "public_face": "以剑修传承闻名的正道宗门",
+  "private_agenda": "通过灵根复测筛掉外门弟子中的不稳定因素",
+  "resources": ["剑冢", "外门祠堂", "灵根测台"],
+  "fears": ["古剑异动引来宗门旧案"],
+  "territory": ["scene_001"],
+  "members": ["char_001"],
+  "relationships": {}
+}

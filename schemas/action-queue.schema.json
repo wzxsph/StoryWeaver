@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://storyweaver.local/schemas/action-queue.schema.json",
+  "title": "StoryWeaver Action Queue",
+  "type": "object",
+  "required": ["generated_at", "schema_version", "summary", "tasks"],
+  "properties": {
+    "generated_at": { "type": "string", "minLength": 1 },
+    "schema_version": { "type": "string", "minLength": 1 },
+    "summary": {
+      "type": "object",
+      "required": ["open", "critical", "warning", "info"],
+      "properties": {
+        "open": { "type": "number", "minimum": 0 },
+        "critical": { "type": "number", "minimum": 0 },
+        "warning": { "type": "number", "minimum": 0 },
+        "info": { "type": "number", "minimum": 0 },
+        "by_chapter": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["chapter", "open"],
+            "properties": {
+              "chapter": { "type": "number", "minimum": 1 },
+              "open": { "type": "number", "minimum": 0 }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "status", "severity", "source", "description", "suggestion"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^act_[a-z0-9_]+$" },
+          "status": { "type": "string", "enum": ["open", "resolved", "ignored"] },
+          "severity": { "type": "string", "enum": ["critical", "warning", "info"] },
+          "chapter": { "type": ["number", "null"], "minimum": 1 },
+          "dimension": { "type": "string" },
+          "description": { "type": "string", "minLength": 1 },
+          "location": { "type": "string" },
+          "suggestion": { "type": "string" },
+          "source": { "type": "string", "minLength": 1 },
+          "created_from": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

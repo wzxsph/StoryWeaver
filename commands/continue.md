@@ -2,7 +2,7 @@
 description: 续写小说章节，基于上下文状态文档
 ---
 
-# /continue
+# /storyweaver:continue
 
 续写小说章节，保持角色、物品、事件一致性。
 
@@ -25,22 +25,24 @@ description: 续写小说章节，基于上下文状态文档
 
 **文风组合示例**：
 ```
-/continue --chapter 5 --style 幽默,动人
-/continue --chapter 10 --style 燃向
-/continue --chapter 15 --mode expand --style 古风
+/storyweaver:continue --chapter 5 --style 幽默,动人
+/storyweaver:continue --chapter 10 --style 燃向
+/storyweaver:continue --chapter 15 --mode expand --style 古风
 ```
 
 ## 执行流程
 
 1. **读取状态文档**：从 `state/` 目录读取相关状态文件
-2. **构建 P0-P3 上下文**：参考 `@rules/novelforge/p0-p3-context.md`
-3. **加载写作规则**：参考 `@rules/novelforge/storyweaver-rules.md`
-4. **注入文风参数**：如指定 `--style`，注入对应的风格提示词
-5. **生成章节内容**
-6. **保存章节正文**：⚠️ 必须保存到 `chapters/chapter_{N}.txt`
-7. **提取状态变化**
-8. **更新状态文档**：⚠️ 必须更新 `state/` 目录下的对应文件
-9. **保存章节记录**：⚠️ 必须保存到 `state/chapters/chapter_{N}.json`
+2. **建立章节契约**：参考 `@rules/novelforge/chapter-contract.md`
+3. **生成或读取章节上下文包**：优先使用 `state/chapters/chapter_{N}/brief.json`；不存在时先执行 `/storyweaver:brief --chapter N`
+4. **加载写作规则**：参考 `@rules/novelforge/storyweaver-rules.md`
+5. **注入文风参数**：如指定 `--style`，注入对应的风格提示词
+6. **基于 brief 和章节契约生成章节内容**
+7. **保存章节正文**：⚠️ 必须保存到 `chapters/chapter_{N}.txt`
+8. **提取状态变化**
+9. **更新状态文档**：⚠️ 必须更新 `state/` 目录下的对应文件
+10. **保存章节记录**：⚠️ 必须保存到 `state/chapters/chapter_{N}.json`
+11. **重建索引并进入闸门链路**：执行 `/storyweaver:index`，随后执行 `/storyweaver:extract`、`/storyweaver:verify`、`/storyweaver:queue` 和 `/storyweaver:gate`
 
 ## 保存要求 ⚠️
 
@@ -48,8 +50,11 @@ description: 续写小说章节，基于上下文状态文档
 
 | 数据 | 保存路径 |
 |------|----------|
+| 章节上下文包 | `state/chapters/chapter_{N}/brief.json` |
 | 章节正文 | `chapters/chapter_{N}.txt` |
-| 章节记录 | `state/chapters/chapter_{N}.json` |
+| 章节记录/章节契约 | `state/chapters/chapter_{N}.json` |
+| 状态提取报告 | `state/chapters/chapter_{N}/extraction.json` |
+| 章节质量闸门 | `state/chapters/chapter_{N}/gate.json` |
 | 角色状态更新 | `state/characters/{id}.json` |
 | 物品状态更新 | `state/items/{id}.json` |
 | 场景状态更新 | `state/scenes/{id}.json` |
@@ -66,16 +71,19 @@ description: 续写小说章节，基于上下文状态文档
 
 ## 下一步
 
-生成章节后进行一致性校验：
+生成章节后进行一致性校验、行动队列刷新和章节闸门检查：
 
 ```bash
-/verify --chapter N
+/storyweaver:extract --chapter N --apply
+/storyweaver:verify --chapter N
+/storyweaver:queue
+/storyweaver:gate --chapter N --promote verified
 ```
 
 ## 示例
 
 ```
-/continue --chapter 1 --words 3000
-/continue --chapter 5 --mode polish
-/continue --chapter 5 --mode expand --instructions "增加感情戏"
+/storyweaver:continue --chapter 1 --words 3000
+/storyweaver:continue --chapter 5 --mode polish
+/storyweaver:continue --chapter 5 --mode expand --instructions "增加感情戏"
 ```

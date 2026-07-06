@@ -1,0 +1,16 @@
+{
+  "running": false,
+  "started_at": null,
+  "current_chapter": 1,
+  "target_chapter": 30,
+  "mode": "safe",
+  "scope": "chapter_range",
+  "completed_chapters": [1],
+  "failed_chapters": [],
+  "stats": {
+    "total_words_written": 176,
+    "chapters_completed": 1,
+    "revisions_made": 0
+  },
+  "recent_activity": ["第1章完成并通过校验"]
+}

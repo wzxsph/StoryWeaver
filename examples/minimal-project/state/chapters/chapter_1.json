@@ -1,0 +1,51 @@
+{
+  "chapter": 1,
+  "title": "玄天剑醒来",
+  "status": "verified",
+  "chapter_goal": "让林小雨发现玄天剑拥有意识，并启动灵根复测压力",
+  "reader_promise": "交付金手指觉醒和身份谜团",
+  "conflict_axis": "林小雨想隐藏玄天剑异动，但宗门复测马上到来",
+  "turning_point": "玄天剑叫出林小雨从未告诉他人的乳名",
+  "summary": "林小雨在外门祠堂听见玄天剑残念传声，得知废剑并非凡物；执事长老随后宣布灵根复测，迫使她立刻面对暴露风险。",
+  "word_count": 156,
+  "style_tags": [
+    "口语化",
+    "悬疑"
+  ],
+  "pov_character": "char_001",
+  "open_loops_introduced": [
+    "玄天剑为何知道林小雨的乳名",
+    "灵根复测会不会发现玄天剑异动"
+  ],
+  "open_loops_advanced": [],
+  "open_loops_resolved": [],
+  "state_delta": {
+    "characters": [
+      "char_001"
+    ],
+    "items": [
+      "item_001"
+    ],
+    "scenes": [
+      "scene_001"
+    ],
+    "organizations": [
+      "org_001"
+    ],
+    "concepts": [
+      "concept_001"
+    ],
+    "timeline_events": [
+      "event_001"
+    ],
+    "plot_threads": [
+      "plot_001"
+    ],
+    "relationships": [
+      "rel_001"
+    ]
+  },
+  "created_at": "2026-07-06T00:00:00Z",
+  "updated_at": "2026-07-06T00:00:00Z",
+  "schema_version": "2.0"
+}

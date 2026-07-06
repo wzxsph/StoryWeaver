@@ -1,0 +1,17 @@
+{
+  "id": "item_001",
+  "name": "玄天剑",
+  "type": "残剑",
+  "description": "被判定为废铁的古旧残剑，剑身有冷光残纹",
+  "current_holder": "char_001",
+  "previous_holders": [],
+  "abilities": ["能以残念传声"],
+  "limitations": ["能力来源未知", "是否会被他人听见尚未确认"],
+  "current_state": "苏醒",
+  "significant_events": [
+    {
+      "chapter": 1,
+      "event": "首次呼唤林小雨的乳名"
+    }
+  ]
+}

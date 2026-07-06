@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://storyweaver.local/schemas/project.schema.json",
+  "title": "StoryWeaver Project Metadata",
+  "type": "object",
+  "required": [
+    "title",
+    "genre",
+    "style",
+    "author",
+    "word_count_target",
+    "template",
+    "version",
+    "last_updated_chapter"
+  ],
+  "properties": {
+    "title": { "type": "string" },
+    "genre": { "type": "array", "items": { "type": "string" } },
+    "style": { "type": "string" },
+    "author": { "type": "string" },
+    "word_count_target": { "type": "number", "minimum": 0 },
+    "template": { "type": "string" },
+    "version": { "type": "string", "minLength": 1 },
+    "last_updated_chapter": { "type": "number", "minimum": 0 }
+  },
+  "additionalProperties": true
+}

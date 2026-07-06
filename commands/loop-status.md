@@ -2,7 +2,7 @@
 description: 查看自动写小说循环状态
 ---
 
-# /loop-status
+# /storyweaver:loop-status
 
 查看当前自动写小说循环的状态和进度。
 
@@ -55,11 +55,12 @@ description: 查看自动写小说循环状态
 ### 运行状态
 - **状态**: 未启动
 
-请先执行 /loop-start 启动自动写小说循环。
+请先执行 `/storyweaver:loop-start` 启动自动写小说循环。
 ```
 
 ## 详细报告
 
 如需查看特定章节的审阅报告：
 - 第N章审阅报告：`state/chapters/chapter_{N}/review.json`
+- 第N章闸门报告：`state/chapters/chapter_{N}/gate.json`
 - 修订历史：`state/chapters/chapter_{N}/revision_history.json`

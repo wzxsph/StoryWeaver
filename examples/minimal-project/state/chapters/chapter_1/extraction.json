@@ -1,0 +1,82 @@
+{
+  "chapter": 1,
+  "generated_at": "2026-07-06T00:00:00Z",
+  "schema_version": "2.0",
+  "source_files": [
+    "chapters/chapter_1.txt",
+    "state/chapters/chapter_1.json"
+  ],
+  "manuscript": {
+    "path": "chapters/chapter_1.txt",
+    "word_count": 156,
+    "paragraph_count": 5
+  },
+  "mentioned_entities": [
+    {
+      "kind": "character",
+      "id": "char_001",
+      "name": "林小雨",
+      "source": "state/characters/char_001.json",
+      "mentions": 2,
+      "evidence": [
+        {
+          "alias": "林小雨",
+          "snippet": "第一章 玄天剑醒来 林小雨第一次听见剑说话，是在宗门晨钟响起的时候。 那声音很轻，像有人隔着一层"
+        },
+        {
+          "alias": "林小雨",
+          "snippet": "下一刻，执事长老推门而入，宣布今日所有外门弟子都要参加灵根复测。 林小雨握紧袖口。她知道自己不能让任何人发现，那柄被判定为废铁的玄天剑，刚刚叫出"
+        }
+      ]
+    },
+    {
+      "kind": "concept",
+      "id": "concept_001",
+      "name": "灵根复测",
+      "source": "state/concepts/concept_001.json",
+      "mentions": 1,
+      "evidence": [
+        {
+          "alias": "灵根复测",
+          "snippet": "残剑微微发亮。 下一刻，执事长老推门而入，宣布今日所有外门弟子都要参加灵根复测。 林小雨握紧袖口。她知道自己不能让任何人发现，那柄被判定为废铁的玄天"
+        }
+      ]
+    },
+    {
+      "kind": "item",
+      "id": "item_001",
+      "name": "玄天剑",
+      "source": "state/items/item_001.json",
+      "mentions": 2,
+      "evidence": [
+        {
+          "alias": "玄天剑",
+          "snippet": "第一章 玄天剑醒来 林小雨第一次听见剑说话，是在宗门晨钟响起的时候。 那声音很轻，"
+        },
+        {
+          "alias": "玄天剑",
+          "snippet": "复测。 林小雨握紧袖口。她知道自己不能让任何人发现，那柄被判定为废铁的玄天剑，刚刚叫出了她从未告诉过任何人的乳名。"
+        }
+      ]
+    }
+  ],
+  "state_delta_suggestion": {
+    "characters": [
+      "char_001"
+    ],
+    "items": [
+      "item_001"
+    ],
+    "scenes": [],
+    "organizations": [],
+    "concepts": [
+      "concept_001"
+    ],
+    "timeline_events": [],
+    "plot_threads": [],
+    "relationships": []
+  },
+  "open_loop_candidates": [],
+  "decisions_required": [],
+  "applied": true
+}

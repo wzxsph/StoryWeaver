@@ -1,51 +1,62 @@
 ---
-description: 初始化网文写作工作区
+description: 初始化网文写作工作区，创建可校验的 StoryWeaver 状态树
 ---
 
-# /init
+# /storyweaver:init
 
-初始化网文写作工作区，创建分布式状态文件。
+初始化网文写作工作区。该命令优先使用确定性初始化器创建 `state/`、`chapters/`、项目元数据、循环状态、状态索引和修订行动队列。
 
 ## 参数
 
-- `--template`: 模板类型（默认 `default`，可选 `snowflake`）
-  - `default`: 空白项目，从零开始
-  - `snowflake`: 雪花创作法模板，带有引导问题
+- `--template`: 模板类型，默认 `default`，可选 `default`/`snowflake`
+- `--title`: 小说标题（可选）
+- `--genre`: 题材标签，多个用英文逗号分隔（可选）
+- `--style`: 文风偏好（可选）
+- `--author`: 作者名（可选）
+- `--target-words`: 目标字数，默认 `0`（可选）
+- `--overwrite`: 允许覆盖已有 `project.json` 和 `loop_status.json`（谨慎使用）
 
-## 执行步骤
+## 执行流程
 
-1. 创建 `state/` 目录结构
-2. 创建 `state/metadata/project.json` 元数据文件
-3. 询问用户项目基本信息：
-   - 小说标题
-   - 题材类型（都市/玄幻/穿越/科幻/其他）
-   - 文风偏好
-   - 作者名（可选）
-4. 更新 `state/metadata/project.json`
-5. **若使用 `--template snowflake`**: 参考 `@workflows/雪花创作法.md` 引导用户完成创作流程
+1. 优先运行初始化器：
+   ```bash
+   node "${CLAUDE_PLUGIN_ROOT}/tools/init-project.mjs" "${CLAUDE_PROJECT_DIR}" --template default
+   ```
+2. 如用户提供参数，透传给初始化器：
+   ```bash
+   node "${CLAUDE_PLUGIN_ROOT}/tools/init-project.mjs" "${CLAUDE_PROJECT_DIR}" --template snowflake --title "<title>" --genre "玄幻,升级流" --style "爽文" --author "<author>" --target-words 300000
+   ```
+3. 初始化器默认不覆盖已有元数据；如检测到已有 `state/metadata/project.json` 或 `state/metadata/loop_status.json`，提示用户确认后再使用 `--overwrite`。
+4. 初始化后执行状态 schema 校验。
+5. 若使用 `--template snowflake`，继续参考 `@workflows/雪花创作法.md` 引导用户完成项目蓝图。
 
-## 状态目录结构
+## 生成文件
 
-```
+```text
 state/
-├── metadata/
-│   └── project.json          # 项目元数据
-├── outline/                  # 大纲目录
-│   └── outline.json         # 整体大纲
-├── characters/              # 角色状态（每角色一个文件）
-├── items/                    # 物品状态（每物品一个文件）
-├── scenes/                  # 场景状态（每场景一个文件）
-├── organizations/           # 组织状态（每组织一个文件）
-├── concepts/                # 概念状态（每概念一个文件）
-├── timeline/                 # 时间线事件（每事件一个文件）
-├── plot_threads/            # 情节线状态（每情节线一个文件）
-├── relationships/           # 关系状态（每关系一个文件）
-└── chapters/                # 章节记录（每章节一个文件）
+├── metadata/project.json
+├── metadata/loop_status.json
+├── metadata/index.json
+├── metadata/action_queue.json
+├── outline/
+├── characters/
+├── items/
+├── scenes/
+├── organizations/
+├── concepts/
+├── timeline/
+├── plot_threads/
+├── relationships/
+└── chapters/
+
+chapters/
 ```
 
 ## 初始化后的下一步
 
-1. `/plan --type outline` — 创建整体大纲
-2. `/worldbuild` — 构建世界观
-3. `/character add` — 添加主要角色
-4. `/continue --chapter 1` — 开始撰写第一章
+1. `/storyweaver:import --path drafts/book.txt`：已有旧稿/存稿时先导入
+2. `/storyweaver:plan --type outline`：创建整体大纲
+3. `/storyweaver:worldbuild`：构建世界观
+4. `/storyweaver:character add`：添加主要角色
+5. `/storyweaver:brief --chapter 1 --words 3000`：生成第一章上下文包
+6. `/storyweaver:continue --chapter 1`：开始撰写第一章

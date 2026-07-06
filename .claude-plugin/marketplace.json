@@ -4,14 +4,14 @@
     "name": "StoryWeaver"
   },
   "metadata": {
-    "description": "网文长篇写作助手 — 故事编织者，状态追踪 + 上下文一致性引擎"
+    "description": "Claude Code 网文长篇创作插件：分布式状态、P0-P3 上下文、逐章续写、十三维一致性校验"
   },
   "plugins": [
     {
       "name": "storyweaver",
       "source": "./",
-      "description": "基于 Claude Code 的网文长篇写作助手，通过十维一致性校验框架管理角色、物品、情节线和关系网络",
-      "version": "1.0.1",
+      "description": "基于 Claude Code 的网文长篇写作助手，通过分布式状态、章节契约、P0-P3 上下文和十三维一致性校验管理长篇创作",
+      "version": "1.2.3",
       "author": {
         "name": "StoryWeaver"
       },

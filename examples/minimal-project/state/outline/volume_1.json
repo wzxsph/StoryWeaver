@@ -1,0 +1,22 @@
+{
+  "kind": "volume",
+  "generated_at": "2026-07-06T00:00:00Z",
+  "schema_version": "2.0",
+  "volume": 1,
+  "title": "废剑初醒",
+  "scope": {
+    "from": 1,
+    "to": 30
+  },
+  "summary": "第一卷围绕玄天剑苏醒、灵根复测和宗门旧案展开，主角必须在隐藏秘密与获得修行资格之间做选择。",
+  "arc_goal": "让林小雨从被动隐藏转向主动调查玄天剑和自身身世。",
+  "chapters": [
+    {
+      "chapter": 1,
+      "title": "玄天剑醒来",
+      "chapter_goal": "让林小雨发现玄天剑拥有意识，并启动灵根复测压力。",
+      "turning_point": "玄天剑叫出林小雨从未告诉他人的乳名。",
+      "status": "verified"
+    }
+  ]
+}

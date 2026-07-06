@@ -1,50 +1,54 @@
 ---
-description: 规划小说大纲、结构和情节
+description: 规划小说整体、分卷和章节，并写入可校验 outline 状态
 ---
 
-# /plan
+# /storyweaver:plan
 
-规划小说的大纲、结构和情节线。
+规划小说的大纲、结构和章节推进。该命令优先使用确定性规划脚手架把用户创意落成 JSON；其中 `--type chapter` 会同时生成章节大纲和 `state/chapters/chapter_{N}.json` 章节契约，让后续 `/storyweaver:brief` 可以直接使用。
 
 ## 参数
 
-- `--type`: 规划类型
-  - `outline` — 整体大纲
-  - `volume` — 分卷大纲
-  - `chapter` — 章节大纲
-- `--scope`: 范围（如 `1-30` 表示第1-30章）
-- `--content`: 规划内容描述
+- `--type`: 规划类型，必填
+  - `outline`: 整体大纲，写入 `state/outline/outline.json`
+  - `volume`: 分卷大纲，写入 `state/outline/volume_{N}.json`
+  - `chapter`: 章节大纲，写入 `state/outline/chapter_{N}.json`
+- `--scope`: 范围
+  - `volume`: 如 `1-30`
+  - `chapter`: 如 `5`
+- `--volume`: 分卷编号，默认 `1`
+- `--title`: 标题（可选）
+- `--content`: 用户提供的规划方向、梗概或章节目标（可选）
+- `--overwrite`: 允许覆盖已有 outline 或章节契约（谨慎使用）
 
 ## 执行流程
 
-1. **分析项目状态**：读取当前 state/ 目录下的所有状态文件
-2. **雪花创作法**（首次规划）：参考 @workflows/雪花创作法.md
-3. **生成大纲**：参考 @prompts/大纲生成.txt
-4. **保存状态**：将规划结果保存到 `state/outline/` 目录
+1. 确认已执行 `/storyweaver:init`，存在 `state/metadata/project.json`。
+2. 如果使用 `--overwrite`，先创建快照：
+   ```bash
+   node "${CLAUDE_PLUGIN_ROOT}/tools/create-snapshot.mjs" "${CLAUDE_PROJECT_DIR}" --reason "before plan overwrite"
+   ```
+3. 优先运行规划脚手架：
+   ```bash
+   node "${CLAUDE_PLUGIN_ROOT}/tools/plan-outline.mjs" "${CLAUDE_PROJECT_DIR}" --type outline --content "<content>"
+   ```
+4. 生成后执行 `/storyweaver:index` 和 `/storyweaver:queue`，刷新项目导航和行动队列。
+5. 对 `--type chapter`，必须检查：
+   - `state/outline/chapter_{N}.json`
+   - `state/chapters/chapter_{N}.json`
+6. 如用户要求更细的创意推演，再参考 `@workflows/雪花创作法.md` 和 `@prompts/大纲生成.txt` 填充字段，而不是绕过 JSON 状态。
 
 ## 保存路径
 
 | 类型 | 保存路径 |
 |------|----------|
-| 整体大纲 (outline) | `state/outline/outline.json` |
-| 分卷大纲 (volume) | `state/outline/volume_{N}.json` |
-| 章节大纲 (chapter) | `state/outline/chapter_{N}.json` |
-
-## 输出
-
-- 文本大纲（显示给用户）
-- 状态文件更新到 `state/outline/` 目录
-
-## 首次规划使用雪花创作法
-
-若项目尚未建立大纲，引导用户完成雪花创作法流程：
-1. 作品标签 → 2. 金手指 → 3. 一句话简介 → 4. 一段话大纲 → 5. 故事大纲 → 6. 世界观设定 → 7. 核心蓝图
+| `outline` | `state/outline/outline.json` |
+| `volume` | `state/outline/volume_{N}.json` |
+| `chapter` | `state/outline/chapter_{N}.json` 与 `state/chapters/chapter_{N}.json` |
 
 ## 示例
 
-```
-/plan --type outline
-/plan --type volume --scope 1-30
-/plan --type chapter --scope 5
-/plan --type chapter --scope 5 --content "林小雨和陆尘的感情升温"
+```bash
+/storyweaver:plan --type outline --content "废剑苏醒，牵出宗门旧案"
+/storyweaver:plan --type volume --volume 1 --scope 1-30 --content "第一卷完成金手指觉醒和宗门复测"
+/storyweaver:plan --type chapter --scope 5 --title "复测钟响" --content "林小雨被迫参加灵根复测"
 ```

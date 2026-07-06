@@ -1,0 +1,71 @@
+{
+  "chapter": 1,
+  "generated_at": "2026-07-06T00:00:00Z",
+  "schema_version": "2.0",
+  "result": {
+    "status": "passed",
+    "passed": true,
+    "score": 100
+  },
+  "metrics": {
+    "actual_word_count": 156,
+    "recorded_word_count": 156,
+    "min_word_count": 1,
+    "paragraph_count": 5,
+    "review_critical": 0,
+    "review_warning": 0,
+    "review_info": 0,
+    "open_queue_critical": 0,
+    "open_queue_warning": 0,
+    "open_queue_info": 0
+  },
+  "files": [
+    {
+      "kind": "chapter_record",
+      "path": "state/chapters/chapter_1.json",
+      "exists": true
+    },
+    {
+      "kind": "manuscript",
+      "path": "chapters/chapter_1.txt",
+      "exists": true
+    },
+    {
+      "kind": "brief",
+      "path": "state/chapters/chapter_1/brief.json",
+      "exists": true
+    },
+    {
+      "kind": "extraction",
+      "path": "state/chapters/chapter_1/extraction.json",
+      "exists": true
+    },
+    {
+      "kind": "review",
+      "path": "state/chapters/chapter_1/review.json",
+      "exists": true
+    },
+    {
+      "kind": "action_queue",
+      "path": "state/metadata/action_queue.json",
+      "exists": true
+    },
+    {
+      "kind": "index",
+      "path": "state/metadata/index.json",
+      "exists": true
+    }
+  ],
+  "blockers": [],
+  "warnings": [],
+  "source_files": [
+    "state/chapters/chapter_1.json",
+    "chapters/chapter_1.txt",
+    "state/chapters/chapter_1/brief.json",
+    "state/chapters/chapter_1/extraction.json",
+    "state/chapters/chapter_1/review.json",
+    "state/metadata/action_queue.json",
+    "state/metadata/index.json"
+  ],
+  "promoted_to": ""
+}

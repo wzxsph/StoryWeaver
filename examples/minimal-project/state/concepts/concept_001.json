@@ -1,0 +1,11 @@
+{
+  "id": "concept_001",
+  "name": "灵根复测",
+  "type": "宗门制度",
+  "definition": "天剑宗每年对外门弟子重新检测资质与异常灵力波动的制度",
+  "rules": ["所有外门弟子必须参加", "异常者会被执事长老单独带走"],
+  "limitations": ["只能检测公开登记的灵力指标"],
+  "status": "locked",
+  "introduced_chapter": 1,
+  "last_updated_chapter": 1
+}

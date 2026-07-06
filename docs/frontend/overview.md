@@ -1,33 +1,12 @@
-# 前端架构
+# 前端说明
 
-## 技术栈
-- Electron + Vue 3 + TypeScript
-- Pinia (状态管理)
-- Element Plus (UI 组件)
-- @vue-flow/core (工作流可视化)
-- CodeMirror (代码编辑)
+StoryWeaver 当前没有 Electron/Vue 前端。
 
-## 目录结构
+用户界面由 Claude Code 的聊天界面、斜杠命令和文件系统组成：
 
-```
-frontend/src/
-├── main/          # Electron main process
-├── preload/       # Preload scripts
-└── renderer/src/
-    ├── api/       # API clients
-    ├── components/# Vue components
-    ├── composables/# Vue composables
-    ├── stores/    # Pinia stores
-    ├── types/     # TypeScript types
-    └── views/     # Page views
-```
+- 命令入口：`/storyweaver:<command>`
+- 状态查看：`/storyweaver:status`、`/storyweaver:chapters`、`/storyweaver:timeline` 等
+- 正文文件：`chapters/chapter_{N}.txt`
+- 结构化状态：`state/**/*.json`
 
-## Pinia Stores
-
-| Store | 用途 |
-|-------|------|
-| `useAIStore` | AI 生成状态 |
-| `useAppStore` | 应用状态 (主题) |
-| `useCardStore` | 卡牌管理 |
-| `useWorkflowStore` | 工作流状态 |
-| `useProjectStore` | 项目管理 |
+如果未来做可视化界面，应优先围绕这些本地文件构建，而不是重新定义一套状态模型。

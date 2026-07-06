@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://storyweaver.local/schemas/revision-history.schema.json",
+  "title": "StoryWeaver Revision History",
+  "type": "object",
+  "required": ["chapter", "generated_at", "schema_version", "revisions"],
+  "properties": {
+    "chapter": { "type": "number", "minimum": 1 },
+    "generated_at": { "type": "string", "minLength": 1 },
+    "schema_version": { "type": "string", "minLength": 1 },
+    "revisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "timestamp", "status", "summary", "files_changed", "fixes"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^rev_[0-9]{3,}$" },
+          "timestamp": { "type": "string", "minLength": 1 },
+          "status": { "type": "string", "enum": ["attempted", "applied", "verified", "rolled_back"] },
+          "summary": { "type": "string", "minLength": 1 },
+          "source_review": { "type": "string" },
+          "files_changed": { "type": "array", "items": { "type": "string" } },
+          "fixes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["severity", "dimension", "description"],
+              "properties": {
+                "task_id": { "type": "string" },
+                "severity": { "type": "string", "enum": ["critical", "warning", "info"] },
+                "dimension": { "type": "string", "minLength": 1 },
+                "description": { "type": "string", "minLength": 1 },
+                "suggestion": { "type": "string" }
+              },
+              "additionalProperties": true
+            }
+          },
+          "remaining_risks": { "type": "array", "items": { "type": "string" } },
+          "requires_verify": { "type": "boolean" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-07-06T00:00:00Z",
+  "schema_version": "2.0",
+  "summary": {
+    "open": 0,
+    "critical": 0,
+    "warning": 0,
+    "info": 0,
+    "by_chapter": []
+  },
+  "tasks": []
+}

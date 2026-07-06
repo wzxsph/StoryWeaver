@@ -1,0 +1,16 @@
+{
+  "id": "scene_001",
+  "name": "天剑宗外门祠堂",
+  "type": "宗门场景",
+  "description": "外门弟子供奉旧剑和领取杂役任务的地方",
+  "location": "天剑宗外门东院",
+  "function_in_story": "主角秘密觉醒与宗门压力交汇的第一场景",
+  "dynamic_state": {
+    "time": "清晨",
+    "atmosphere": "压抑而紧张",
+    "characters_present": ["char_001"],
+    "key_objects": ["item_001"],
+    "last_changed_chapter": 1
+  },
+  "constraints": ["执事长老会在晨钟后巡查"]
+}

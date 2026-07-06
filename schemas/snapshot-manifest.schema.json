@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://storyweaver.local/schemas/snapshot-manifest.schema.json",
+  "title": "StoryWeaver Snapshot Manifest",
+  "type": "object",
+  "required": [
+    "snapshot_id",
+    "generated_at",
+    "schema_version",
+    "project_root",
+    "reason",
+    "scope",
+    "files",
+    "counts"
+  ],
+  "properties": {
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^snap_[0-9]{8}T[0-9]{9}Z(_[0-9]{3})?$"
+    },
+    "generated_at": { "type": "string", "minLength": 1 },
+    "schema_version": { "type": "string", "minLength": 1 },
+    "project_root": { "type": "string", "minLength": 1 },
+    "reason": { "type": "string", "minLength": 1 },
+    "scope": {
+      "type": "object",
+      "required": ["state", "chapters"],
+      "properties": {
+        "state": { "type": "boolean" },
+        "chapters": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source", "snapshot", "sha256", "bytes"],
+        "properties": {
+          "source": {
+            "type": "string",
+            "pattern": "^(state|chapters)/"
+          },
+          "snapshot": {
+            "type": "string",
+            "pattern": "^snapshots/snap_[0-9]{8}T[0-9]{9}Z(_[0-9]{3})?/(state|chapters)/"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "bytes": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": ["files", "bytes"],
+      "properties": {
+        "files": { "type": "number", "minimum": 1 },
+        "bytes": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

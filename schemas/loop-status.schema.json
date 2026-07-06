@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://storyweaver.local/schemas/loop-status.schema.json",
+  "title": "StoryWeaver Loop Status",
+  "type": "object",
+  "required": [
+    "running",
+    "started_at",
+    "current_chapter",
+    "target_chapter",
+    "mode",
+    "scope",
+    "completed_chapters",
+    "failed_chapters",
+    "stats",
+    "recent_activity"
+  ],
+  "properties": {
+    "running": { "type": "boolean" },
+    "started_at": { "type": ["string", "null"] },
+    "completed_at": { "type": ["string", "null"] },
+    "current_chapter": { "type": "number", "minimum": 0 },
+    "target_chapter": { "type": "number", "minimum": 0 },
+    "mode": { "type": "string", "enum": ["safe", "fast"] },
+    "scope": { "type": "string", "enum": ["all", "volume", "chapter_range"] },
+    "completed_chapters": { "type": "array", "items": { "type": "number", "minimum": 1 } },
+    "failed_chapters": { "type": "array", "items": { "type": "number", "minimum": 1 } },
+    "stats": {
+      "type": "object",
+      "required": ["total_words_written", "chapters_completed", "revisions_made"],
+      "properties": {
+        "total_words_written": { "type": "number", "minimum": 0 },
+        "chapters_completed": { "type": "number", "minimum": 0 },
+        "revisions_made": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "recent_activity": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}
